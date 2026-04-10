@@ -2,7 +2,10 @@ LIB = lib
 BUILD = build
 TEST = test
 
-default : test01
+default : help
+
+help : 
+	@echo "Ce makefile peut compiler et lancer les fichiers test01 a test03"
 
 test01 : $(TEST)/test01.c
 	gcc -Wall $(TEST)/test01.c $(LIB)/liste-c.o -o $(TEST)/test01 && $(TEST)/test01
