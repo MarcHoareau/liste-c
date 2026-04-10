@@ -1,5 +1,9 @@
 #include "liste-c.h"
 
+char* versionLC(){
+    return "v1.01";
+}
+
 typedef struct st_nodeLC {
     int value;
     struct st_nodeLC *next;
