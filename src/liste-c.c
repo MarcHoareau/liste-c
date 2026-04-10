@@ -25,6 +25,9 @@ int sizeLC(ListeC liste){
 }
 
 void addLC(ListeC liste, int value){
+    if(liste == NULL){
+        return;
+    }
     NodeLC nextNode = malloc(sizeof(struct st_nodeLC));
     if(nextNode == NULL) return;
 
@@ -45,7 +48,7 @@ void addLC(ListeC liste, int value){
 }
 
 int getLC(ListeC liste, int pos){
-    if(pos < 0 || pos >= liste->size){
+    if(liste == NULL || pos < 0 || pos >= liste->size){
         return -1;
     }
     NodeLC currentNode = liste->head;
@@ -67,4 +70,74 @@ void deleteLC(ListeC liste){
     }
 
     free(liste);
+}
+
+void removeLC(ListeC liste, int pos){
+    if(liste == NULL || pos < 0 || pos >= liste->size){
+        return;
+    }
+
+    NodeLC deleteNode;
+
+    if(pos == 0){
+        deleteNode = liste->head;
+        liste->head = deleteNode->next;
+    } 
+    else {
+        NodeLC currentNode = liste->head;
+
+        for(int i = 0; i < pos - 1; i++){
+            currentNode = currentNode->next;
+        }
+
+        deleteNode = currentNode->next;
+        currentNode->next = deleteNode->next;
+    }
+
+    free(deleteNode);
+    liste->size--;
+}
+
+void replaceLC(ListeC liste, int value, int pos){
+    if(liste == NULL || pos < 0 || pos >= liste->size){
+        return;
+    }
+
+    NodeLC currentNode = liste->head;
+
+    for(int i = 0; i < pos; i++){
+        currentNode = currentNode->next;
+    }
+
+    currentNode->value = value;
+}
+
+void insertLC(ListeC liste, int value, int pos){
+    if(liste == NULL || pos < 0 || pos > liste->size){
+        return;
+    }
+
+    NodeLC newNode = malloc(sizeof(*newNode));
+    if(newNode == NULL){
+        return;
+    }
+
+    newNode->value = value;
+
+    if(pos == 0){
+        newNode->next = liste->head;
+        liste->head = newNode;
+    } 
+    else {
+        NodeLC currentNode = liste->head;
+
+        for(int i = 0; i < pos - 1; i++){
+            currentNode = currentNode->next;
+        }
+
+        newNode->next = currentNode->next;
+        currentNode->next = newNode;
+    }
+
+    liste->size++;
 }
