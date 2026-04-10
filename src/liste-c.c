@@ -56,3 +56,15 @@ int getLC(ListeC liste, int pos){
 
     return currentNode->value;
 }
+
+void deleteLC(ListeC liste){
+    NodeLC currentNode = liste->head;
+
+    while(currentNode != NULL){
+        NodeLC temp = currentNode;
+        currentNode = currentNode->next;
+        free(temp);
+    }
+
+    free(liste);
+}

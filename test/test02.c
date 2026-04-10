@@ -1,4 +1,4 @@
-#include "../lib/liste-c.h"
+#include "../src/liste-c.h"
 #include <stdio.h>
 
 void affiche(ListeC list){
@@ -19,6 +19,8 @@ int main(){
     addLC(list,7);
 
     affiche(list);
+
+    deleteLC(list);
 
     return 0;
 }
