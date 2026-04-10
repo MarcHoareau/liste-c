@@ -2,7 +2,10 @@ LIB = lib
 BUILD = build
 TEST = test
 
-default : comp
+default : test01
 
-comp : $(TEST)/test01.c
+test01 : $(TEST)/test01.c
 	gcc -Wall $(TEST)/test01.c $(LIB)/liste-c.o -o $(TEST)/test01 && $(TEST)/test01
+
+test02 : $(TEST)/test02.c
+	gcc -Wall $(TEST)/test02.c $(LIB)/liste-c.o -o $(TEST)/test02 && $(TEST)/test02
