@@ -15,3 +15,6 @@ test02 : $(TEST)/test02.c
 
 test03 : $(TEST)/test03.c
 	gcc -Wall $(TEST)/test03.c $(LIB)/liste-c.o -o $(TEST)/test03 && $(TEST)/test03
+
+bench_test02 : $(TEST)/test02.c
+	gcc -g -fsanitize=address -Wall $(TEST)/test02.c $(LIB)/liste-c.o -o $(TEST)/test02 && $(TEST)/test02
