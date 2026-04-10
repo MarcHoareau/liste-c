@@ -9,3 +9,6 @@ test01 : $(TEST)/test01.c
 
 test02 : $(TEST)/test02.c
 	gcc -Wall $(TEST)/test02.c $(LIB)/liste-c.o -o $(TEST)/test02 && $(TEST)/test02
+
+test03 : $(TEST)/test03.c
+	gcc -Wall $(TEST)/test03.c $(LIB)/liste-c.o -o $(TEST)/test03 && $(TEST)/test03
