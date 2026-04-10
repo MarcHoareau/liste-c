@@ -1,11 +1,15 @@
 LIB = lib
 BUILD = build
 TEST = test
+SRC = src
 
 default : help
 
 help : 
-	@echo "Ce makefile peut compiler et lancer les fichiers test01 a test03"
+	@echo "Ce makefile peut compiler et lancer les fichiers test01 a test03 ainsi que de compiler la librairie dans src"
+
+lib : $(SRC)/liste-c.c
+	gcc -c -Wall $(SRC)/liste-c.c -o $(SRC)/liste-c.o
 
 test01 : $(TEST)/test01.c
 	gcc -Wall $(TEST)/test01.c $(LIB)/liste-c.o -o $(TEST)/test01 && $(TEST)/test01
